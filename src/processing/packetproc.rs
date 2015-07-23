@@ -1,13 +1,8 @@
 use std::thread::{JoinHandle, Builder};
 use std::sync::{Arc, RwLock};
 use chan::{Receiver, Sender, async};
-use client;
-use client::*;
-
-pub trait PacketProcessor: Send + 'static {
-	fn process_packet(&mut self, info: Arc<RwLock<Box<PacketProcessingInfo>>>);
-	fn clone(&self) -> Box<PacketProcessor>;
-}
+use client::{FiestaPacket, FiestaNetworkClient};
+use processing::PacketProcessor;
 
 pub struct PacketProcessingThreadPool {
 	thread_handles:					Arc<RwLock<Vec<JoinHandle<()>>>>,

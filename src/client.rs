@@ -6,7 +6,7 @@ use mio::*;
 use mio::tcp::*;
 
 use buffer::*;
-use super::processing::*;
+use processing::{PacketProcessor, PacketProcessingInfo};
 
 pub const SERVER_TOKEN: Token = Token(0);
 

@@ -4,7 +4,7 @@ use std::sync::{
 	RwLock
 };
 
-use super::packetproc::*;
+use super::packetproc::PacketProcessingInfo;
 
 pub trait PacketProcessor: Send + 'static {
 	fn process_packet(&mut self, info: Arc<RwLock<Box<PacketProcessingInfo>>>);
